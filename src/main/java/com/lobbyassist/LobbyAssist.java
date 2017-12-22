@@ -1,10 +1,8 @@
 package com.lobbyassist;
 
-import com.lobbyassist.model.StunAck;
+import com.lobbyassist.net.packet.StunAck;
 import com.lobbyassist.net.packet.CaptureTask;
-import com.lobbyassist.net.packet.StunPacket;
 import com.lobbyassist.ui.Overlay;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -19,7 +17,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.pcap4j.core.*;
-import org.pcap4j.packet.Packet;
 
 import java.net.InetAddress;
 import java.util.HashMap;

@@ -1,6 +1,5 @@
 package com.lobbyassist.net.packet;
 
-import com.lobbyassist.model.StunAck;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import org.pcap4j.core.*;

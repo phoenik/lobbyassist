@@ -1,4 +1,4 @@
-package com.lobbyassist.model;
+package com.lobbyassist.net.packet;
 
 public class StunAck {
 
