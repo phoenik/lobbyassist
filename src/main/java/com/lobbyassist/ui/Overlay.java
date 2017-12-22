@@ -1,5 +1,6 @@
 package com.lobbyassist.ui;
 
+import com.lobbyassist.model.User;
 import javafx.beans.InvalidationListener;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableMap;
@@ -24,17 +25,21 @@ public class Overlay {
         private double yoffset = 0;
         private boolean dragging = false;
 
+        private User user;
+
         public PingButton (Integer id, Long value) {
             super();
-            this.setText(id, value);
-            this.setTextFill(value);
             this.autosize();
+            this.user = new User(id, value);
 
-            this.setOnMousePressed(event -> {
-                if (event.getClickCount() == 3) {
+            this.setOnMouseClicked(event -> {
+                if (event.isShiftDown() && event.isControlDown()) {
                     this.xoffset = event.getSceneX();
                     this.yoffset = event.getSceneY();
                     this.dragging = true;
+                } else if(event.isShiftDown()) {
+                    this.user.cycle();
+                    this.refresh();
                 }
             });
 
@@ -46,11 +51,13 @@ public class Overlay {
             });
 
             this.setOnMouseReleased(event -> this.dragging = false);
+
+            this.refresh();
         }
 
-        public void setText(Integer id, Long value) {
-            this.setText(String.format("Ping: %d", value));
-            this.setTextFill(value);
+        public void update (Long value) {
+            this.user.pingProperty().setValue(value);
+            this.refresh();
         }
 
         private void setTextFill(Long value) {
@@ -61,6 +68,13 @@ public class Overlay {
             } else {
                 this.setTextFill(Color.SPRINGGREEN);
             }
+        }
+
+        private void refresh () {
+            this.setText(String.format("%s: %d",
+                    this.user.displayProperty().getValue(),
+                    this.user.pingProperty().getValue()));
+            this.setTextFill(this.user.pingProperty().getValue());
         }
     }
 
@@ -82,7 +96,7 @@ public class Overlay {
 
             if (change.wasAdded() && value != null) {
                 if (entries.containsKey(key)) {
-                    entries.get(key).setText(key, value);
+                    entries.get(key).update(value);
                 } else {
                     PingButton button = new PingButton(key, value);
                     entries.put(key, button);
@@ -97,10 +111,6 @@ public class Overlay {
 
             stage.sizeToScene();
         }));
-
-        pane.getChildren().add(new PingButton(0, 0L));
-        pane.getChildren().add(new PingButton(0, 150L));
-        pane.getChildren().add(new PingButton(0, 200L));
 
         pane.autosize();
 

@@ -22,16 +22,34 @@ public class User {
             }
             return USER;
         }
+
+        public static FILTER cycle (FILTER filter) {
+            switch (filter) {
+                case USER:
+                    return LIKED;
+                case LIKED:
+                    return BLOCKED;
+                case BLOCKED:
+                    return USER;
+                default:
+                    return USER;
+            }
+        }
     }
 
     private int id = 0;
-    private StringProperty display = new SimpleStringProperty();
+    private StringProperty display = new SimpleStringProperty(FILTER.USER.name());
     private LongProperty ping = new SimpleLongProperty(0);
 
     private FILTER filter = FILTER.USER;
 
     public User (int id) {
         this.id = id;
+    }
+
+    public User (int id, long ping) {
+        this.id = id;
+        this.pingProperty().setValue(ping);
     }
 
     private void setFilter (FILTER filter) {
@@ -47,15 +65,7 @@ public class User {
         return ping;
     }
 
-    public void reset () {
-        this.setFilter(FILTER.USER);
-    }
-
-    public void liked () {
-        this.setFilter(FILTER.LIKED);
-    }
-
-    public void block () {
-        this.setFilter(FILTER.BLOCKED);
+    public void cycle () {
+        this.setFilter(FILTER.cycle(this.filter));
     }
 }

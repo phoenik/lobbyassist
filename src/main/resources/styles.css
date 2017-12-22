@@ -37,6 +37,8 @@
     -fx-background-radius: 0;
     -fx-background-color: rgba(0, 0, 0, 0.3);
     -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-min-width: 100;
 }
 
 .ping-overlay .button:hover {
