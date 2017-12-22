@@ -66,7 +66,6 @@ public class StunPacket {
             }
 
         }
-
     }
 
     public int getSrcAddr() {
