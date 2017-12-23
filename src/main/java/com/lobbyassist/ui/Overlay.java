@@ -56,7 +56,7 @@ public class Overlay {
         }
 
         public void update (Long value) {
-            this.user.pingProperty().setValue(value);
+            this.user.setPing(value);
             this.refresh();
         }
 
@@ -72,9 +72,9 @@ public class Overlay {
 
         private void refresh () {
             this.setText(String.format("%s: %d",
-                    this.user.displayProperty().getValue(),
-                    this.user.pingProperty().getValue()));
-            this.setTextFill(this.user.pingProperty().getValue());
+                    this.user.getFilter().name(),
+                    this.user.getPing()));
+            this.setTextFill(this.user.getPing());
         }
     }
 

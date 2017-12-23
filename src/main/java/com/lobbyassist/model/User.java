@@ -1,8 +1,7 @@
 package com.lobbyassist.model;
+import java.io.Serializable;
 
-import javafx.beans.property.*;
-
-public class User {
+public class User implements Serializable{
     public enum FILTER {
         USER(-1),
         LIKED(0),
@@ -37,35 +36,28 @@ public class User {
         }
     }
 
-    private int id = 0;
-    private StringProperty display = new SimpleStringProperty(FILTER.USER.name());
-    private LongProperty ping = new SimpleLongProperty(0);
-
+    private int id;
+    private Long ping;
     private FILTER filter = FILTER.USER;
-
-    public User (int id) {
-        this.id = id;
-    }
 
     public User (int id, long ping) {
         this.id = id;
-        this.pingProperty().setValue(ping);
+        this.ping = ping;
     }
 
-    private void setFilter (FILTER filter) {
-        this.filter = filter;
-        this.display.setValue(this.filter.name());
+    public void setPing (Long ping) {
+        this.ping = ping;
     }
 
-    public StringProperty displayProperty () {
-        return display;
-    }
-
-    public LongProperty pingProperty () {
+    public Long getPing() {
         return ping;
     }
 
+    public FILTER getFilter() {
+        return filter;
+    }
+
     public void cycle () {
-        this.setFilter(FILTER.cycle(this.filter));
+        this.filter = FILTER.cycle(this.filter);
     }
 }
