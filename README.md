@@ -1,4 +1,4 @@
-#LobbyAssist
+# LobbyAssist
 A STUN packet monitor for P2P games utilizing UDP NAT peering.
 **Currently no data is persisted to disk.**
 ## Requirements
