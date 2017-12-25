@@ -1,50 +1,53 @@
 .root {
-    -fx-font-size: 16;
-    -fx-font-family: Arial;
+    -fx-font-size: 14;
+    -fx-font-family: Lucida Console, Lucida Sans Typewriter, monaco, Bitstream Vera Sans Mono, monospace;
 }
 
-.top-menu {
-    -fx-padding: 0 0 0 10;
+.la-main {
+    -fx-background-color: transparent;
+    -fx-pref-width: 225;
+}
+
+.la-menu {
     -fx-background-color: darkred;
 }
 
-.top-menu .title {
-    -fx-fill: white;
-}
-
-.top-menu .button {
+.la-menu > .button {
     -fx-text-fill: white;
     -fx-background-color: transparent;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 5 10 5 10;
+}
+
+.la-menu > .drag-button{
+    -fx-cursor: MOVE;
+}
+
+.la-menu > .button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.33);
+}
+
+.la-menu > .combo-box-base {
+    -fx-text-fill: white;
+    -fx-mark-color: white;
+    -fx-background-color: transparent;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+.la-menu > .combo-box-base > .list-cell{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.la-pings > .button {
+    -fx-background-color: rgba(0,0,0,0.25);
     -fx-background-radius: 0;
     -fx-border-radius: 0;
-    -fx-padding: 5 10 5 10;
-    -fx-height: 20;
-    -fx-width: 20;
+    -fx-alignment: CENTER-LEFT;
 }
 
-.top-menu .button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.5);
-}
-
-.ping-overlay {
-    -fx-background-color: rgba(0,0,0,0);
-    -fx-padding: 2;
-}
-
-.ping-overlay .button {
-    -fx-font-family: Lucida Console, Lucida Sans Typewriter, monaco, Bitstream Vera Sans Mono, monospace;
-    -fx-font-size: 12;
-    -fx-background-radius: 0;
-    -fx-background-color: rgba(0, 0, 0, 0.3);
-    -fx-font-weight: bold;
-    -fx-alignment: center-left;
-    -fx-min-width: 100;
-}
-
-.ping-overlay .button:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.75);
-}
-
-.main-pane {
-    -fx-min-width: 300;
+.la-pings > .button:hover {
+    -fx-background-color: rgba(0,0,0,0.5);
 }

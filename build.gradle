@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 version = '1.0'
+mainClassName = 'com.lobbyassist.LobbyAssist'
 
 repositories {
     mavenCentral()
@@ -18,7 +19,7 @@ task release (type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'LobbyAssist',
             'Implementation-Version': version,
-            'Main-Class': 'com.lobbyassist.LobbyAssist'
+            'Main-Class': mainClassName
     }
     baseName = project.name + '-release'
     from {
@@ -28,6 +29,4 @@ task release (type: Jar) {
     }
     with jar
 }
-
-mainClassName = 'com.lobbyassist.LobbyAssist'
 

@@ -1,4 +1,5 @@
 package com.lobbyassist.model;
+
 import java.io.Serializable;
 
 public class User implements Serializable{
@@ -59,5 +60,10 @@ public class User implements Serializable{
 
     public void cycle () {
         this.filter = FILTER.cycle(this.filter);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s: %d", this.filter.name(), this.ping);
     }
 }

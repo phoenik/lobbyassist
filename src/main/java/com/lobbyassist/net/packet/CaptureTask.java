@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CaptureTask<Void> extends Task{
+public class CaptureTask<Void> extends Task {
 
     private class PingUpdate implements Runnable {
         private final Map<Integer, Long> pings;
@@ -75,7 +75,7 @@ public class CaptureTask<Void> extends Task{
     }
 
     @Override
-    protected Void call() throws Exception {
+    protected Void call() {
         try {
             ph = Pcaps.getDevByAddress(addr).openLive(65536,
                     PcapNetworkInterface.PromiscuousMode.NONPROMISCUOUS, 0);
