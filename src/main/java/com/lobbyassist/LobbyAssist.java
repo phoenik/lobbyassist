@@ -158,10 +158,6 @@ public class LobbyAssist extends Application {
         pane.autosize();
         Map<Integer, UserButton> buttons = new HashMap<>();
 
-        pane.getChildren().add(new UserButton(new User(0, 1)));
-        pane.getChildren().add(new UserButton(new User(1, 101)));
-        pane.getChildren().add(new UserButton(new User(2, 201)));
-
         pings.addListener((MapChangeListener<Integer, Long>) change -> {
             final Integer key = change.getKey();
             final Long value = change.getValueAdded();
